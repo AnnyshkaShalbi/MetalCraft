@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./ui/globals.css";
+import { Header } from "@/app/ui/header";
+import { Footer } from "@/app/ui/footer";
+import { raleway } from "@/app/ui/fonts";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,9 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${raleway.className} antialiased bg-dark-700 text-white flex flex-col min-h-screen`}
       >
-        {children}
+        <Header />
+        <main className="pt-20 md:pt-[100px]">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
